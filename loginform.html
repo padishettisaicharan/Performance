@@ -1,0 +1,175 @@
+
+<html>
+  <head>
+  
+  <title>Welcome To Login Form</title>
+  <style>
+   body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+	
+
+    .login {
+      width: 300px;
+      margin: 100px auto;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: #fff;
+      
+    }
+
+    .login input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .login .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      background-color: #007BFF;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .login .btn:hover {
+      background-color: red;
+    }
+   </style>
+  </head>
+  <script>
+  
+ function login() 
+ {
+    var uname = document.getElementById("email");
+    var pwd = document.getElementById("pwd1");
+	 let b=uname.value.trim();
+
+    if (uname.value.trim() === '' || uname.value== undefined || uname.value== null || uname.value=="")
+	{
+        alert("Please enter a username.");
+        return;
+    }
+	else{
+	     let specialChars="1,2,3,4,5,6,7,8,9,0,-,=,!,@,#,$,%,^,&,*,(,),_,+,{,},|,[,],;,:,',<,>,.,?,~,`,\",\/";
+		 special_Chars=specialChars.split(",");
+		 special_Chars.push(",");
+			for (j=0;j<special_Chars.length;j++){
+			let b=special_Chars[j];
+			let c=uname.value.trim().indexOf(b);
+			    if (c>=0){
+				     alert("Special characters like '"+b+"' are not allowed in username field.");
+				     uname.focus();
+				     return;
+			    }
+			}
+	}
+
+    if (pwd.value.trim() === '' || pwd.value== undefined || pwd.value== null || pwd.value=="") 
+	{
+        alert("Please enter the password.");
+        return;
+    }
+	else {
+	     if(pwd.value.length<8){
+		     alert("Password length must be minmum 8 characters.");
+			 pwd.focus();
+             return;
+		 }
+		 else{
+		     let uCletter="A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
+			 let lCletter="a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
+			 let num= "1,2,3,4,5,6,7,8,9,0";
+			 let spl="-,=,!,@,#,$,%,^,&,*,(,),_,+,{,},|,[,],;,:,',<,>,.,?,~,`,\",\/";
+			 upper_case=uCletter.split(",");
+			 lower_case=lCletter.split(",");
+			 number=num.split(",");
+			 spl_char=spl.split(",");
+			 spl_char.push(",");
+			 let uc= false;
+			     for(let i=0;i<upper_case.length; i++){
+				     let b=upper_case[i];
+					 let c=pwd.value.indexOf(b);
+					 if(c>=0){
+					     uc=true;
+						 break;
+					 }
+				 }
+		     let lc= false;
+			     for(let i=0;i<lower_case.length; i++){
+				     let b=lower_case[i];
+					 let c=pwd.value.indexOf(b);
+					 if(c>=0){
+					     lc=true;
+						 break;
+					 }
+				}
+			 let No= false;
+			     for(let i=0;i<number.length; i++){
+				     let b=number[i];
+					 let c=pwd.value.indexOf(b);
+					 if(c>=0){
+					     No=true;
+						 break;
+					 }
+				}
+			 let special= false;
+			     for(let i=0;i<spl_char.length; i++){
+				     let b=spl_char[i];
+					 let c=pwd.value.indexOf(b);
+					 if(c>=0){
+					     special=true;
+						 break;
+					 }
+				 }
+				if(uc==false || lc==false || No==false || special== false){
+				     alert("The Password should have atleast, One Capital letter, One Small letter, One Number, One Special Character and Minimum 8 characters.");
+					 pwd.focus();
+					 return;
+				}
+		} 
+	}
+
+    /*alert('Thank You for Login & You are Redirecting to Healthcare Website');
+    window.location= "https://www.betterhealth.vic.gov.au/health/servicesandsupport/regular-health-checks";*/
+}
+
+	function Forgotpassword ()
+	{
+		window.location ="file:///C:/Users/SAI%20CHARAN/Documents/HealthCare/forgotpassword.html";
+		
+	}
+	</script>
+	<body>
+	<div class="login">
+	<table cellspacing="2" align="center" cellpadding="8" border="0">
+	<tr>
+	<td>Enter User Name :</td>
+	<td><input type="text" placeholder="Enter user name here" id="email"  required /></td>
+	</tr>
+	<tr>
+	<td>Enter Password :</td>
+	<td><input type="password" placeholder="Enter Password here" id="pwd1" required /></td>
+	</tr>
+	<tr>
+	<td></td>
+	<td>
+	
+	<input type="submit" value="Login" class="btn" onClick="login()" />
+	<input type="submit" value="Forgot Password" onclick="Forgotpassword()" class="btn" /></td>
+	
+	</tr>
+	<tr><td colspan="2">Don't have an account, <a href="file:///C:/Users/SAI%20CHARAN/Documents/HealthCare/Registration.html" >Register Here</td></tr>
+	</table>
+	</div>
+  	 
+  </body>
+  </html>
